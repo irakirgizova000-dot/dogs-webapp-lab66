@@ -1,13 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#292520">
-    <title>Мир собак</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Породы собак</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <header>
@@ -16,63 +13,60 @@
     </header>
 
     <main class="container">
-        <section class="dogs" aria-label="Каталог пород">
-            <article class="dog-card">
-                <img src="images/labrador.jpg" alt="Лабрадор">
+        <div class="dogs">
+            <div class="dog-card">
+                <img src="images/labrador.jpg" alt="Лабрадор" onerror="this.style.display='none'">
                 <h3>Лабрадор</h3>
-                <button class="select-button" data-dog="labrador">Выбрать</button>
-            </article>
+                <button class="btn" data-dog="labrador">Выбрать</button>
+            </div>
 
-            <article class="dog-card">
-                <img src="images/shepherd.jpg" alt="Немецкая овчарка">
+            <div class="dog-card">
+                <img src="images/shepherd.jpg" alt="Немецкая овчарка" onerror="this.style.display='none'">
                 <h3>Немецкая овчарка</h3>
-                <button class="select-button" data-dog="shepherd">Выбрать</button>
-            </article>
+                <button class="btn" data-dog="shepherd">Выбрать</button>
+            </div>
 
-            <article class="dog-card">
-                <img src="images/husky.jpg" alt="Хаски">
+            <div class="dog-card">
+                <img src="images/husky.jpg" alt="Хаски" onerror="this.style.display='none'">
                 <h3>Хаски</h3>
-                <button class="select-button" data-dog="husky">Выбрать</button>
-            </article>
+                <button class="btn" data-dog="husky">Выбрать</button>
+            </div>
 
-            <article class="dog-card">
-                <img src="images/pug.jpg" alt="Мопс">
+            <div class="dog-card">
+                <img src="images/pug.jpg" alt="Мопс" onerror="this.style.display='none'">
                 <h3>Мопс</h3>
-                <button class="select-button" data-dog="pug">Выбрать</button>
-            </article>
+                <button class="btn" data-dog="pug">Выбрать</button>
+            </div>
 
-            <article class="dog-card">
-                <img src="images/bulldog.jpg" alt="Бульдог">
+            <div class="dog-card">
+                <img src="images/bulldog.jpg" alt="Бульдог" onerror="this.style.display='none'">
                 <h3>Бульдог</h3>
-                <button class="select-button" data-dog="bulldog">Выбрать</button>
-            </article>
+                <button class="btn" data-dog="bulldog">Выбрать</button>
+            </div>
 
-            <article class="dog-card">
-                <img src="images/dachshund.jpg" alt="Такса">
+            <div class="dog-card">
+                <img src="images/dachshund.jpg" alt="Такса" onerror="this.style.display='none'">
                 <h3>Такса</h3>
-                <button class="select-button" data-dog="dachshund">Выбрать</button>
-            </article>
+                <button class="btn" data-dog="dachshund">Выбрать</button>
+            </div>
 
-            <article class="dog-card">
-                <img src="images/poodle.jpg" alt="Пудель">
+            <div class="dog-card">
+                <img src="images/poodle.jpg" alt="Пудель" onerror="this.style.display='none'">
                 <h3>Пудель</h3>
-                <button class="select-button" data-dog="poodle">Выбрать</button>
-            </article>
+                <button class="btn" data-dog="poodle">Выбрать</button>
+            </div>
 
-            <article class="dog-card">
-                <img src="images/chihuahua.jpg" alt="Чихуахуа">
+            <div class="dog-card">
+                <img src="images/chihuahua.jpg" alt="Чихуахуа" onerror="this.style.display='none'">
                 <h3>Чихуахуа</h3>
-                <button class="select-button" data-dog="chihuahua">Выбрать</button>
-            </article>
-        </section>
+                <button class="btn" data-dog="chihuahua">Выбрать</button>
+            </div>
+        </div>
 
-        <p id="status" role="status">Нажми «Выбрать» у понравившейся породы.</p>
-
-        <button id="confirm-button" disabled>
-            Показать информацию
-        </button>
+        <p id="status">Нажми «Выбрать» у понравившейся породы.</p>
     </main>
 
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
