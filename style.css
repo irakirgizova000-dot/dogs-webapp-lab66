@@ -1,84 +1,140 @@
 
+:root {
+    color-scheme: dark;
+    --bg: #292520;
+    --card: #1c1917;
+    --text: #ffffff;
+    --muted: #aaa39d;
+    --accent: #a48777;
+    --accent-hover: #b99a88;
+    --selected: #269c55;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    padding: 16px;
+    padding: 18px 16px 28px;
     font-family: Arial, sans-serif;
-    color: var(--tg-theme-text-color, #222222);
-    background: var(--tg-theme-bg-color, #f5f7fa);
+    color: var(--text);
+    background: var(--bg);
 }
 
 header {
     text-align: center;
-    margin-bottom: 24px;
+    margin: 22px 0 28px;
 }
 
 header h1 {
-    margin-bottom: 8px;
+    margin: 0 0 12px;
+    font-size: 30px;
 }
 
 header p {
-    color: var(--tg-theme-hint-color, #777777);
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .container {
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
 }
 
 .dogs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
 }
 
 .dog-card {
+    min-width: 0;
     overflow: hidden;
+    padding: 12px;
     text-align: center;
-    padding: 10px;
-    border-radius: 16px;
-    background: var(--tg-theme-secondary-bg-color, #ffffff);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background: var(--card);
 }
 
 .dog-card img {
+    display: block;
     width: 100%;
-    height: 130px;
+    height: 175px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 14px;
+    background: #38322d;
 }
 
 .dog-card h3 {
-    min-height: 36px;
-    font-size: 15px;
+    min-height: 40px;
+    margin: 14px 0;
+    font-size: 17px;
+    line-height: 1.35;
 }
 
-.dog-card button {
-    width: 100%;
-    padding: 10px 6px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    background: var(--tg-theme-button-color, #3390ec);
+button {
+    border: 0;
+    border-radius: 12px;
+    padding: 13px 10px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    color: white;
+    background: var(--accent);
+    -webkit-tap-highlight-color: transparent;
 }
 
-.dog-card button:active {
-    opacity: 0.7;
+.select-button {
+    width: 100%;
 }
 
-.dog-card button.selected {
-    background: #269c55;
+button:active {
+    opacity: 0.85;
+}
+
+.select-button.selected {
+    background: var(--selected);
 }
 
 #status {
-    margin-top: 20px;
+    margin: 22px 0 14px;
     text-align: center;
+    color: var(--muted);
     line-height: 1.5;
 }
 
-@media (max-width: 350px) {
+#confirm-button {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+    background: var(--selected);
+}
+
+#confirm-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+@media (max-width: 360px) {
+    body {
+        padding: 12px 10px 24px;
+    }
+
     .dogs {
-        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .dog-card {
+        padding: 8px;
+    }
+
+    .dog-card img {
+        height: 135px;
+    }
+
+    .dog-card h3 {
+        font-size: 15px;
     }
 }
