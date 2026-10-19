@@ -4,6 +4,9 @@ const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
 
+// После публикации Python-сервера замени адрес ниже на адрес Render.
+const API_URL = "https://ТВОЙ-СЕРВЕР.onrender.com";
+
 const dogs = {
     labrador: "Лабрадор",
     shepherd: "Немецкая овчарка",
@@ -18,27 +21,64 @@ const dogs = {
 let selectedDog = null;
 
 const status = document.getElementById("status");
+const confirmButton = document.getElementById("confirm-button");
+const selectButtons = document.querySelectorAll("[data-dog]");
 
-document.querySelectorAll("[data-dog]").forEach(button => {
+selectButtons.forEach(button => {
     button.addEventListener("click", () => {
         selectedDog = button.dataset.dog;
 
-        document.querySelectorAll("[data-dog]").forEach(item => {
-            item.classList.remove("selected");
+        selectButtons.forEach(item => {
+            item.classList.toggle("selected", item === button);
         });
 
-        button.classList.add("selected");
-
-        status.textContent =
-            "Выбрана порода: " + dogs[selectedDog];
-
-        tg.MainButton.setText("Показать информацию");
-        tg.MainButton.show();
+        status.textContent = `Выбрана порода: ${dogs[selectedDog]}`;
+        confirmButton.disabled = false;
     });
 });
 
-tg.MainButton.onClick(() => {
-    if (selectedDog !== null) {
-        tg.sendData(selectedDog);
+confirmButton.addEventListener("click", async () => {
+    if (!selectedDog) {
+        status.textContent = "Сначала выбери породу.";
+        return;
+    }
+
+    if (!tg.initData) {
+        status.textContent =
+            "Открой мини-приложение через меню Telegram.";
+        return;
+    }
+
+    confirmButton.disabled = true;
+    status.textContent = "Отправляем запрос боту…";
+
+    try {
+        const response = await fetch(`${API_URL}/api/select-dog`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                initData: tg.initData,
+                dog: selectedDog
+            })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.error || "Не удалось отправить запрос.");
+        }
+
+        status.textContent =
+            `Готово! Информация о породе «${dogs[selectedDog]}» отправлена в чат с ботом.`;
+
+    } catch (error) {
+        console.error("Ошибка отправки:", error);
+
+        status.textContent =
+            "Не удалось связаться с сервером. Попробуй ещё раз.";
+    } finally {
+        confirmButton.disabled = false;
     }
 });
