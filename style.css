@@ -1,140 +1,89 @@
-
-:root {
-    color-scheme: dark;
-    --bg: #292520;
-    --card: #1c1917;
-    --text: #ffffff;
-    --muted: #aaa39d;
-    --accent: #a48777;
-    --accent-hover: #b99a88;
-    --selected: #269c55;
-}
-
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
-    padding: 18px 16px 28px;
-    font-family: Arial, sans-serif;
-    color: var(--text);
-    background: var(--bg);
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--tg-theme-text-color, #222222);
+    background: var(--tg-theme-bg-color, #f5f7fa);
 }
 
 header {
     text-align: center;
-    margin: 22px 0 28px;
+    margin-bottom: 24px;
 }
 
 header h1 {
-    margin: 0 0 12px;
-    font-size: 30px;
+    margin-bottom: 8px;
+    font-size: 22px;
 }
 
 header p {
-    color: var(--muted);
-    font-size: 16px;
-    line-height: 1.5;
+    color: var(--tg-theme-hint-color, #777777);
+    margin: 0;
 }
 
 .container {
-    max-width: 720px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
 .dogs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 14px;
 }
 
 .dog-card {
-    min-width: 0;
     overflow: hidden;
-    padding: 12px;
     text-align: center;
-    border-radius: 20px;
-    background: var(--card);
+    padding: 10px;
+    border-radius: 16px;
+    background: var(--tg-theme-secondary-bg-color, #ffffff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .dog-card img {
-    display: block;
     width: 100%;
-    height: 175px;
+    height: 130px;
     object-fit: cover;
-    border-radius: 14px;
-    background: #38322d;
+    border-radius: 12px;
 }
 
 .dog-card h3 {
-    min-height: 40px;
-    margin: 14px 0;
-    font-size: 17px;
-    line-height: 1.35;
+    min-height: 36px;
+    font-size: 15px;
+    margin: 8px 0;
 }
 
-button {
-    border: 0;
-    border-radius: 12px;
-    padding: 13px 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    color: white;
-    background: var(--accent);
-    -webkit-tap-highlight-color: transparent;
-}
-
-.select-button {
+.btn {
     width: 100%;
+    padding: 10px 6px;
+    border: none;
+    border-radius: 10px;
+    color: var(--tg-theme-button-text-color, #ffffff);
+    background: var(--tg-theme-button-color, #3390ec);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s, background 0.2s;
 }
 
-button:active {
-    opacity: 0.85;
+.btn:active {
+    opacity: 0.7;
 }
 
-.select-button.selected {
-    background: var(--selected);
+.btn.selected {
+    background: #269c55;
 }
 
 #status {
-    margin: 22px 0 14px;
+    margin-top: 20px;
     text-align: center;
-    color: var(--muted);
     line-height: 1.5;
+    color: var(--tg-theme-hint-color, #777777);
 }
 
-#confirm-button {
-    display: block;
-    width: 100%;
-    min-height: 52px;
-    background: var(--selected);
-}
-
-#confirm-button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
-@media (max-width: 360px) {
-    body {
-        padding: 12px 10px 24px;
-    }
-
+@media (max-width: 350px) {
     .dogs {
-        gap: 10px;
-    }
-
-    .dog-card {
-        padding: 8px;
-    }
-
-    .dog-card img {
-        height: 135px;
-    }
-
-    .dog-card h3 {
-        font-size: 15px;
+        grid-template-columns: 1fr;
     }
 }
